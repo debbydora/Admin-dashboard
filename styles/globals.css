@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .teamBg {
+    /* background-size: 25%; */
+    background-position: 100% 0;
+  }
+  /* ... */
+}
+
 html,
 body {
   padding: 0;

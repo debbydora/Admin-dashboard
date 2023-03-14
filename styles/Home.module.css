@@ -127,3 +127,13 @@
     filter: invert(1);
   }
 }
+
+.harrys {
+  /* bg-purple-700 border border-red-800 h-60 rounded-br-large w-32 */
+
+  background-color: red;
+  z-index: -1;
+  height: 450px;
+  width: 100%;
+  position: fixed;
+}

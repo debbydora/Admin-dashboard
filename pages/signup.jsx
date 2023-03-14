@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Button from "../components/Button";
 
 const Signup = () => {
@@ -11,7 +12,7 @@ const Signup = () => {
           </a>
         </div> */}
         <div className="w-full max-w-sm px-6 py-4 overflow-hidden rounded-md bg-white shadow-md sm:max-w-lg sm:rounded-lg">
-          <div className="flex items-center justify-center border border-red-200">
+          <div className="flex items-center justify-center ">
             <Image src="./fire.svg" width={50} height={30} alt={"fire"} />
             <span className="text-2xl font-semibold text-gray-700">
               B-dashboard
@@ -30,7 +31,7 @@ const Signup = () => {
                 <input
                   type="text"
                   name="name"
-                  className="block w-full mt-1 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
+                  className="block w-full px-2 mt-1 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
                 />
               </div>
             </div>
@@ -45,7 +46,7 @@ const Signup = () => {
                 <input
                   type="email"
                   name="email"
-                  className="block w-full mt-1  outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
+                  className="block w-full mt-1 px-2 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
                 />
               </div>
             </div>
@@ -60,7 +61,7 @@ const Signup = () => {
                 <input
                   type="password"
                   name="password"
-                  className="block w-full mt-1  outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
+                  className="block w-full mt-1 px-2 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
                 />
               </div>
             </div>
@@ -75,7 +76,7 @@ const Signup = () => {
                 <input
                   type="password"
                   name="password_confirmation"
-                  className="block w-full mt-1  outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
+                  className="block w-full mt-1 px-2  outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
                 />
               </div>
             </div>
@@ -86,16 +87,16 @@ const Signup = () => {
               <Button
                 type="button"
                 title="Register"
-                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
+                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-strongViolet rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
               />
             </div>
           </form>
           <div className="mt-4 text-grey-600">
             Already have an account?{" "}
             <span>
-              <a className="text-purple-600 hover:underline" href="#">
+              <Link className="text-purple-600 hover:underline" href="/login">
                 Log in
-              </a>
+              </Link>
             </span>
           </div>
           {/* <div className="flex items-center w-full my-4">
