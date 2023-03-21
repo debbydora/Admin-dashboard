@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Button from "../components/Button";
 import Link from "next/link";
+import useAuthProvider from "../providers/authProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Spinner from "../components/Spinner";
 
 const Login = () => {
+  const { loginData, handleLoginOnchange, handleLogin, loading } =
+    useAuthProvider();
   return (
     <div className="flex  items-center min-h-screen justify-center sm:justify-center sm:pt-0 bg-gradient-to-r from-softCyan via-lightViolet to-softBlue">
-      {/* <div>
-          <a href="/">
-            <h3 className="text-4xl font-bold text-purple-600">Logo</h3>
-          </a>
-        </div> */}
       <div className="w-full max-w-sm px-6 py-4 overflow-hidden rounded-md bg-white shadow-md  sm:rounded-lg">
         <div className="flex items-center justify-center ">
           <Image src="./fire.svg" width={50} height={30} alt={"fire"} />
@@ -31,6 +32,8 @@ const Login = () => {
                 type="email"
                 name="email"
                 className="block w-full mt-1 px-2 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
+                value={loginData.email}
+                onChange={handleLoginOnchange}
               />
             </div>
           </div>
@@ -46,6 +49,8 @@ const Login = () => {
                 type="password"
                 name="password"
                 className="block w-full mt-1 px-2 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
+                value={loginData.password}
+                onChange={handleLoginOnchange}
               />
             </div>
           </div>
@@ -56,10 +61,12 @@ const Login = () => {
           <div className="flex items-center mt-4">
             <Button
               type="button"
-              title="Login"
+              title={loading ? <Spinner /> : "Login"}
               className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-strongViolet rounded-md hover:bg-purple-500 focus:outline-none focus:bg-purple-500"
+              onClick={handleLogin}
             />
           </div>
+          <ToastContainer />
         </form>
         <div className="mt-4 text-grey-600">
           Don't have an account?{" "}

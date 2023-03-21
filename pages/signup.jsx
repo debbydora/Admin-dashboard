@@ -1,8 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../components/Button";
+import useAuthProvider from "../providers/authProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Spinner from "../components/Spinner";
 
 const Signup = () => {
+  const { signupData, handleSignupOnchange, handleSignup, loading } =
+    useAuthProvider();
+
   return (
     <div>
       <div className="flex flex-col items-center min-h-screen justify-center sm:justify-center sm:pt-0 bg-gradient-to-r from-softCyan via-lightViolet to-softBlue">
@@ -32,6 +39,8 @@ const Signup = () => {
                   type="text"
                   name="name"
                   className="block w-full px-2 mt-1 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
+                  value={signupData.name}
+                  onChange={handleSignupOnchange}
                 />
               </div>
             </div>
@@ -47,6 +56,8 @@ const Signup = () => {
                   type="email"
                   name="email"
                   className="block w-full mt-1 px-2 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
+                  value={signupData.email}
+                  onChange={handleSignupOnchange}
                 />
               </div>
             </div>
@@ -62,6 +73,8 @@ const Signup = () => {
                   type="password"
                   name="password"
                   className="block w-full mt-1 px-2 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
+                  value={signupData.value}
+                  onChange={handleSignupOnchange}
                 />
               </div>
             </div>
@@ -86,10 +99,12 @@ const Signup = () => {
             <div className="flex items-center mt-4">
               <Button
                 type="button"
-                title="Register"
+                title={loading ? <Spinner /> : "Register"}
                 className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-strongViolet rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600"
+                onClick={handleSignup}
               />
             </div>
+            <ToastContainer />
           </form>
           <div className="mt-4 text-grey-600">
             Already have an account?{" "}

@@ -2,7 +2,9 @@ import Image from "next/image";
 import Navbar from "../components/Navbar";
 import { Roboto } from "next/font/google";
 import Spinner from "../components/Spinner";
-import UserProvider from "../providers/userProvider";
+import UserProvider from "../providers/dataProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -19,7 +21,6 @@ const HomePage = () => {
         validate,
         onSubmitInformation,
         loading,
-        getAllUsers,
       }) => {
         return (
           <>
@@ -477,7 +478,16 @@ const HomePage = () => {
                 className="bg-formColorBg py-8 h-full md:p-[4rem]"
               >
                 <div className="w-[90%] mx-auto md:w-[92%] lg:w-[100%] xl:w-[70%] 2xl:w-[50%] bg-white md:p-8 rounded-md lg:flex lg:justify-between">
-                  <div className="bg-gradient-to-r from-softCyan via-lightViolet to-softBlue w-[250px] xl:w-[300px] hidden lg:block"></div>
+                  {/* <div className="bg-gradient-to-r from-softCyan via-lightViolet to-softBlue w-[250px] xl:w-[300px] hidden lg:block"></div> */}
+                  <div className="hidden md:block lg:w-[25%]">
+                    <Image
+                      src="/iphone.svg"
+                      alt="phone"
+                      width={332}
+                      height={679}
+                      className="w-[100%]"
+                    />
+                  </div>
                   <div className="lg:w-[65%] xl:w-[55%]">
                     <div className="space-y-3 p-4">
                       <h2 className="text-[1.3rem] md:text-[1.9rem] font-bold leading-[1.1]">
@@ -544,13 +554,14 @@ const HomePage = () => {
                       <div className="mt-6">
                         <button
                           type="button"
-                          className="disabled:bg-purple-300 py-3 px-9 enabled:bg-gradient-to-r from-softCyan via-lightViolet to-softBlue rounded-md text-white font-medium"
+                          className="disabled:bg-purple-300 py-3 px-9 enabled:bg-purple-700 rounded-md text-white font-medium"
                           disabled={!validate()}
                           onClick={onSubmitInformation}
                         >
                           {loading ? <Spinner /> : "submit"}
                         </button>
                       </div>
+                      <ToastContainer />
                     </form>
                   </div>
                 </div>

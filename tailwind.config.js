@@ -27,6 +27,7 @@ module.exports = {
         teamColor: "#EEEEEE ",
         formColorBg: " #F4F7FF",
         limeGreen: "#09bf49",
+        dBlack: "#637381",
       },
       borderRadius: {
         "4xl": "12rem",

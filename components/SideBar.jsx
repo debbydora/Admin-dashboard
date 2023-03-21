@@ -2,11 +2,13 @@ import { forwardRef } from "react";
 import Link from "next/link";
 import { HomeIcon, CreditCardIcon, UserIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
+import { useAuth } from "../context/authContext";
 
 //The forwardRef is used to reference this component as a child when it is called
 // in the Transition Component.
 const SideBar = forwardRef(({ showNav }, ref) => {
   const router = useRouter();
+  const { logout } = useAuth();
   const navLinks = [
     {
       pathName: "/dashboard",
@@ -14,7 +16,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
       icon: <HomeIcon />,
     },
     {
-      pathName: "/user",
+      pathName: "/account",
       text: "Account",
       icon: <UserIcon />,
     },
@@ -49,6 +51,15 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             </div>
           </Link>
         ))}
+      </div>
+      <div
+        className="pl-6 py-3 mx-5 lg:mt-52 cursor-pointer"
+        onClick={() => {
+          logout();
+          router.push("/login");
+        }}
+      >
+        <p>Logout</p>
       </div>
     </div>
   );

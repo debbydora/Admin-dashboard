@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import {
   collection,
   addDoc,
@@ -17,10 +18,31 @@ const UserProvider = (props) => {
 
   const [loading, setLoading] = useState(false);
   const [userList, setUserList] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dataPerPage] = useState(5);
 
   useEffect(() => {
-    getAllUsers();
+    getAllData();
   }, []);
+
+  //PAGINATION
+  //get currentdata
+  const indexOfLastData = currentPage * dataPerPage;
+  const indexOfFirstData = indexOfLastData - dataPerPage;
+  const currentData = userList.slice(indexOfFirstData, indexOfLastData);
+  const totalPages = Math.ceil(userList.length / dataPerPage);
+
+  const previousPage = () => {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage !== Math.ceil(userList.length / dataPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   const handleUserDetails = (e) => {
     const { name, value } = e.target;
@@ -45,6 +67,9 @@ const UserProvider = (props) => {
         timeStamp: serverTimestamp(),
       });
       setLoading(false);
+      toast.success("Detail submission successful", {
+        position: toast.POSITION.TOP_CENTER,
+      });
       setUserInfo({
         firstName: "",
         lastName: "",
@@ -53,11 +78,14 @@ const UserProvider = (props) => {
       });
     } catch (err) {
       setLoading(false);
+      toast.error(err, {
+        position: toast.POSITION.TOP_CENTER,
+      });
       console.error(err);
     }
   };
 
-  const getAllUsers = async () => {
+  const getAllData = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "users"));
       let list = [];
@@ -96,10 +124,15 @@ const UserProvider = (props) => {
     validate,
     onSubmitInformation,
     loading,
-    getAllUsers,
+    getAllData,
     userList,
     tableHeaders,
     csvReport,
+    currentData,
+    totalPages,
+    previousPage,
+    nextPage,
+    currentPage,
   });
 };
 

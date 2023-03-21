@@ -1,11 +1,21 @@
 import Image from "next/image";
 
-const Pagination = ({ onPrev, onNext, currentPage, totalPages }) => {
+const Pagination = ({
+  onPrev,
+  onNext,
+  currentPage,
+  dataPerPage,
+  totalPages,
+}) => {
+  const pageNumbers = [];
+  for (let i = 1; i < Math.ceil(totalPages / dataPerPage); i++) {
+    pageNumbers.push(i);
+  }
   return (
     <>
       {totalPages > 0 && (
         <div className="flex">
-          {currentPage && (
+          {currentPage !== 1 && (
             <Image
               src="/chevron_left.svg"
               alt="back arrow"
