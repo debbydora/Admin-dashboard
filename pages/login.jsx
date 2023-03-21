@@ -5,79 +5,86 @@ import useAuthProvider from "../providers/authProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../components/Spinner";
+import Head from "next/head";
 
 const Login = () => {
   const { loginData, handleLoginOnchange, handleLogin, loading } =
     useAuthProvider();
+
   return (
-    <div className="flex  items-center min-h-screen justify-center sm:justify-center sm:pt-0 bg-gradient-to-r from-softCyan via-lightViolet to-softBlue">
-      <div className="w-full max-w-sm px-6 py-4 overflow-hidden rounded-md bg-white shadow-md  sm:rounded-lg">
-        <div className="flex items-center justify-center ">
-          <Image src="./fire.svg" width={50} height={30} alt={"fire"} />
-          <span className="text-2xl font-semibold text-gray-700">
-            B-dashboard
-          </span>
-        </div>
-
-        <form>
-          <div className="mt-4">
-            <label
-              htmlFor="email"
-              className="block  text-base font-medium text-gray-700 undefined"
-            >
-              Email
-            </label>
-            <div className="flex flex-col items-start">
-              <input
-                type="email"
-                name="email"
-                className="block w-full mt-1 px-2 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
-                value={loginData.email}
-                onChange={handleLoginOnchange}
-              />
-            </div>
-          </div>
-          <div className="mt-4">
-            <label
-              htmlFor="password"
-              className="block  text-base font-medium text-gray-700 undefined"
-            >
-              Password
-            </label>
-            <div className="flex flex-col items-start">
-              <input
-                type="password"
-                name="password"
-                className="block w-full mt-1 px-2 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
-                value={loginData.password}
-                onChange={handleLoginOnchange}
-              />
-            </div>
+    <>
+      <Head>
+        <title>Waiting List | Login</title>
+        <meta name="keywords" content="waiting list" />
+      </Head>
+      <div className="flex  items-center min-h-screen justify-center sm:justify-center sm:pt-0 bg-gradient-to-r from-softCyan via-lightViolet to-softBlue">
+        <div className="w-full max-w-sm px-6 py-4 overflow-hidden rounded-md bg-white shadow-md  sm:rounded-lg">
+          <div className="flex items-center justify-center ">
+            <Image src="./fire.svg" width={50} height={30} alt={"fire"} />
+            <span className="text-2xl font-semibold text-gray-700">
+              B-dashboard
+            </span>
           </div>
 
-          {/* <a href="#" className="text-xs text-purple-600 hover:underline">
+          <form>
+            <div className="mt-4">
+              <label
+                htmlFor="email"
+                className="block  text-base font-medium text-gray-700 undefined"
+              >
+                Email
+              </label>
+              <div className="flex flex-col items-start">
+                <input
+                  type="email"
+                  name="email"
+                  className="block w-full mt-1 px-2 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
+                  value={loginData.email}
+                  onChange={handleLoginOnchange}
+                />
+              </div>
+            </div>
+            <div className="mt-4">
+              <label
+                htmlFor="password"
+                className="block  text-base font-medium text-gray-700 undefined"
+              >
+                Password
+              </label>
+              <div className="flex flex-col items-start">
+                <input
+                  type="password"
+                  name="password"
+                  className="block w-full mt-1 px-2 outline-none border-gray-300 rounded-md shadow-md focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50"
+                  value={loginData.password}
+                  onChange={handleLoginOnchange}
+                />
+              </div>
+            </div>
+
+            {/* <a href="#" className="text-xs text-purple-600 hover:underline">
               Forget Password?
             </a> */}
-          <div className="flex items-center mt-4">
-            <Button
-              type="button"
-              title={loading ? <Spinner /> : "Login"}
-              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-strongViolet rounded-md hover:bg-purple-500 focus:outline-none focus:bg-purple-500"
-              onClick={handleLogin}
-            />
+            <div className="flex items-center mt-4">
+              <Button
+                type="button"
+                title={loading ? <Spinner /> : "Login"}
+                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-strongViolet rounded-md hover:bg-purple-500 focus:outline-none focus:bg-purple-500"
+                onClick={handleLogin}
+              />
+            </div>
+            <ToastContainer />
+          </form>
+          <div className="mt-4 text-grey-600">
+            Don&apos;t have an account?
+            <span>
+              <Link className="text-purple-600 hover:underline" href="/signup">
+                {" "}
+                Register
+              </Link>
+            </span>
           </div>
-          <ToastContainer />
-        </form>
-        <div className="mt-4 text-grey-600">
-          Don&apos;t have an account?
-          <span>
-            <Link className="text-purple-600 hover:underline" href="/signup">
-              {" "}
-              Register
-            </Link>
-          </span>
-        </div>
-        {/* <div className="flex items-center w-full my-4">
+          {/* <div className="flex items-center w-full my-4">
             <hr className="w-full" />
             <p className="px-3 ">OR</p>
             <hr className="w-full" />
@@ -112,8 +119,9 @@ const Login = () => {
               <p>Login with GitHub</p>
             </button>
           </div> */}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

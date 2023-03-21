@@ -8,7 +8,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../lib/firebase";
 
-const UserProvider = (props) => {
+const UserProvider = () => {
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
@@ -118,7 +118,7 @@ const UserProvider = (props) => {
     filename: "users.csv",
   };
 
-  return props.render({
+  return {
     handleUserDetails,
     userInfo,
     validate,
@@ -133,7 +133,7 @@ const UserProvider = (props) => {
     previousPage,
     nextPage,
     currentPage,
-  });
+  };
 };
 
 export default UserProvider;

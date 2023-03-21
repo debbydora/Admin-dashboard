@@ -5,6 +5,7 @@ import useAuthProvider from "../providers/authProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../components/Spinner";
+import Head from "next/head";
 
 const Signup = () => {
   const { signupData, handleSignupOnchange, handleSignup, loading } =
@@ -12,12 +13,11 @@ const Signup = () => {
 
   return (
     <div>
+      <Head>
+        <title>Waiting List | Signup</title>
+        <meta name="keywords" content="waiting list" />
+      </Head>
       <div className="flex flex-col items-center min-h-screen justify-center sm:justify-center sm:pt-0 bg-gradient-to-r from-softCyan via-lightViolet to-softBlue">
-        {/* <div>
-          <a href="/">
-            <h3 className="text-4xl font-bold text-purple-600">Logo</h3>
-          </a>
-        </div> */}
         <div className="w-full max-w-sm px-6 py-4 overflow-hidden rounded-md bg-white shadow-md sm:max-w-lg sm:rounded-lg">
           <div className="flex items-center justify-center ">
             <Image src="./fire.svg" width={50} height={30} alt={"fire"} />
