@@ -69,9 +69,10 @@ const Login = () => {
           <ToastContainer />
         </form>
         <div className="mt-4 text-grey-600">
-          Don't have an account?{" "}
+          Don&apos;t have an account?
           <span>
             <Link className="text-purple-600 hover:underline" href="/signup">
+              {" "}
               Register
             </Link>
           </span>
